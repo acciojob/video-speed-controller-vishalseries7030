@@ -1,24 +1,17 @@
-// Get elements
 const player = document.querySelector('.player');
-const video = player.querySelector('.viewer');
+const video = player.querySelector('.player__video');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress__filled');
 
-// Functions
 function togglePlay() {
-  if (video.paused) {
-    video.play();
-  } else {
-    video.pause();
-  }
+  video.paused ? video.play() : video.pause();
 }
 
 function updateButton() {
-  const icon = video.paused ? '►' : '❚ ❚';
-  toggle.textContent = icon;
+  toggle.textContent = video.paused ? '►' : '❚ ❚';
 }
 
 function skip() {
@@ -39,7 +32,6 @@ function scrub(e) {
   video.currentTime = scrubTime;
 }
 
-// Event listeners
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
